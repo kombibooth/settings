@@ -1,25 +1,6 @@
-# node-lib-boilerplate
+# Kombibooth Settings
 
-Another bolilerplate, for create node module...
-
-I was tired to open old projects and check the structure so I've decided to create this one...
-
-## What it contains?
-
-- mocha 2.3
-- chai 3.4
-- eslint 1.5
-- babel 5.8
-- babel-eslint 4.1
-- eslint-config-airbnb 0.1
-
-
-### Commands
-```bash
-npm run test
-npm run compile
-npm run watch-test
-```
+Settings module of kombibooth
 
 ## License
 
