@@ -1,23 +1,9 @@
-import fs from 'fs';
-import chai from 'chai';
+import { expect } from 'chai';
 
-import mock from 'mock-fs';
-
+import { readFile, fileExists } from './spec-helper';
 import * as setting from '../src/';
 
-const expect = chai.expect;
-
 describe('save', () => {
-  beforeEach(() => {
-    mock({
-      oshomedir: {},
-    });
-  });
-
-  afterEach(() => {
-    mock.restore();
-  });
-
   it('should be able to save a setting file', async () => {
     const settings = {
       a: 1,
@@ -58,28 +44,3 @@ describe('save', () => {
     expect(settings).to.be.equal('{"a":"b"}');
   });
 });
-
-
-function fileExists (file) {
-  return new Promise((resolve, reject) => {
-    fs.stat(file, (err, stats) => {
-      if (err) {
-        return reject(err);
-      }
-
-      return resolve(stats);
-    });
-  });
-}
-
-function readFile (file) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(file, (err, data) => {
-      if (err) {
-        return reject(err);
-      }
-
-      return resolve(data.toString());
-    });
-  });
-}
