@@ -3,7 +3,6 @@ import mock from 'mock-fs';
 
 beforeEach(() => {
   mock({
-    oshomedir: {},
   });
 });
 
