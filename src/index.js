@@ -17,6 +17,10 @@ export function install () {
   return writeJSONFile(SETTINGS_FILE, DEFAULT_SETTINGS);
 }
 
+export function exists () {
+  return fileExists(SETTINGS_FILE);
+}
+
 export function save (data) {
   return writeJSONFile(SETTINGS_FILE, data);
 }
@@ -53,6 +57,18 @@ function readJSONFile (file) {
       } catch (parseError) {
         return reject(parseError);
       }
+    });
+  });
+}
+
+function fileExists (file) {
+  return new Promise((resolve) => {
+    fs.stat(file, (err, stats) => {
+      if (err) {
+        return resolve(false);
+      }
+
+      return resolve(!!stats);
     });
   });
 }
